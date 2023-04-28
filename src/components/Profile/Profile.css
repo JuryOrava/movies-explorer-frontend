@@ -1,0 +1,80 @@
+.profile__container {
+    width: 410px;
+    margin: auto;
+    position: relative;
+    padding-top: 70px;
+    box-sizing: border-box;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+}
+
+.profile__title {
+    margin: 4px 0 107px;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.profile__input {
+    text-align: right;
+    color: #000;
+    font-size: 11px;
+    line-height: 13px;
+    padding: 16px 0;
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+
+.profile__input_one {
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.profile__input-name {
+    position: absolute;
+    color: #000;
+    font-size: 11px;
+    line-height: 13px;
+    margin: 0;
+    bottom: 0;
+    padding: 0;
+}
+
+.profile__label {
+    position: relative;
+    width: 100%;
+}
+
+.profile__btns {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+}
+
+.profile__btn {
+    background: none;
+    border: none;
+    font-size: 13px;
+    line-height: 16px;
+    cursor: pointer;
+}
+
+.profile__sign-btn {
+    margin-top: 16px;
+    color: #EE3465;
+    margin-bottom: 70px;
+}
+
+@media screen and (max-width: 480px) {
+    .profile__container {
+        width: 260px;
+    }
+}

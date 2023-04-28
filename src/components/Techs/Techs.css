@@ -1,0 +1,89 @@
+.techs {
+    background: #F5F5F5;
+    padding: 100px 0;
+}
+
+.techs__container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.techs__title {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    margin: 90px 0 0;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+.techs__desc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    margin: 26px auto 100px;
+    max-width: 460px;
+}
+
+.techs__langs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.techs__lang {
+    background: #E8E8E8;
+    border-radius: 10px;
+    width: 90px;
+    padding: 21px 0;
+    text-align: center;
+    margin: 0 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 1000px) {
+    .techs__container {
+        max-width: 668px;
+    }
+    .techs {
+        padding: 90px 0;
+    }
+    .techs__lang {
+        width: 84px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .techs {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    .techs__lang {
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .about-project {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+    .techs__title {
+        font-size: 30px;
+        line-height: 36px;
+        margin-top: 60px;
+    }
+    .techs__desc {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 24px 0 50px;
+    }
+}

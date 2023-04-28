@@ -53,6 +53,7 @@
     font-size: 18px;
     line-height: 22px;
     padding: 14px 0;
+    border-radius: 3px;
 }
 
 .sign__btn:hover {

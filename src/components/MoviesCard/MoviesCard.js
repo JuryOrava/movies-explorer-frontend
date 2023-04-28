@@ -9,11 +9,11 @@ function MoviesCard(props) {
   return (
     <>
       <div className="movie__desc">
-        <div className="movie__favourites"></div>
+        <button className="movie__favourites"></button>
         <p className="movie__name">{props.card.name}</p>
         <p className="movie__time">{props.card.time}</p>
       </div>
-      <div className="movie__image" style={{ backgroundImage: `url(${props.card.image})` }} ></div>
+      <img className="movie__image" src={props.card.image} alt={props.card.name}/>
     </>
   )
 }

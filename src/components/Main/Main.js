@@ -12,7 +12,7 @@ import Footer from '../Footer/Footer.js';
 
 import './Main.css';
 
-function Main(props) {
+function Main(props) {  
     return (
       <>
         {!props.loggedIn && <NavTab />}

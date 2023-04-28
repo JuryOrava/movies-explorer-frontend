@@ -8,6 +8,10 @@
     position: relative;
 }
 
+.header_main-page {
+    background: #5c5c5c;
+}
+
 .header__left {
     display: flex;
     align-items: center;

@@ -50,7 +50,7 @@ function App() {
 
   const [currentUser, setСurrentUser] = React.useState([]);
   const [cards, setCards] = React.useState(cardList);
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   
   const navigate = useNavigate();
 
@@ -136,9 +136,9 @@ const handleSubmitLogin = (password, email) => {
     <>
     <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
-    {loggedIn && <Header/>}
+    {loggedIn && <Header />}
       <Routes>
-        <Route path="/" element={<Main loggedIn={loggedIn}/>} />
+        <Route path="/" element={<Main loggedIn={loggedIn} />} />
         <Route path="/movies" element={<ProtectedRoute element={<Movies cards={cards} moviesBtnActive={true} />} loggedIn={loggedIn}/>} />
         <Route path="/saved-movies" element={<ProtectedRoute element={<Movies cards={cards} moviesBtnActive={false} />} loggedIn={loggedIn}/>} />
         <Route path="/profile" element={<ProtectedRoute element={<Profile handleExit={handleExit} onSubmit={handleUpdateUser}/>} loggedIn={loggedIn}/>} />

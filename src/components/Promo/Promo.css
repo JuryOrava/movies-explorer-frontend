@@ -1,5 +1,7 @@
 .promo {
     background: #5C5C5C;
+    margin-top: -74px;
+    padding-top: 74px;
 }
 
 .promo__container {
@@ -8,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 75px 0 85px;
+    padding: 75px 20px 85px;
 }
 
 .promo__title {

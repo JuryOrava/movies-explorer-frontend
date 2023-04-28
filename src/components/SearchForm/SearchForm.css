@@ -1,0 +1,145 @@
+.search {
+    padding: 19px;
+    background: #FDFDFD;
+    box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+    border-radius: 9px;
+    margin: 70px 0;
+    display: flex;
+}
+
+.search__form {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.search__input {
+    padding: 0;
+    background: none;
+    color: #A0A0A0;
+    margin: 0;
+    border: none;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+.search__btns {
+    display: flex;
+    align-items: center;
+}
+
+.search__btn {
+    padding: 0;
+    background: none;
+    border: none;
+    height: 40px;
+    width: 34px;
+    padding-right: 20px;
+    box-sizing: content-box;
+    border-right: 1px solid #CBCBCB;
+    cursor: pointer;
+}
+
+.search__btn:hover {
+    opacity: 0.7;
+}
+
+.search__btn-img {
+    padding: 3px 0;
+}
+
+.search__slider {
+    background: #2be080;
+    width: 34px;
+    height: 14px;
+    border-radius: 20px;
+    margin: 0 14px 0 29px;
+    padding: 0;
+    position: relative;
+}
+
+.search__slider-desc {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.search__slider-item {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    left: 5%;
+    bottom: 12%;
+    transition: .5s ease-in-out;
+}
+
+.search__slider-item_active {
+    left: 66%;
+}
+
+@media screen and (max-width: 1200px) {
+    .search {
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    .search__btn_mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .search {
+        margin: 80px 30px 0;
+    }
+    .search__btn_pc {
+        display: none;
+    }
+    .search__btn {
+        border: none;
+        padding: 0;
+    }
+    .search__btn_mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 46px 0;
+    }
+    .search__slider-desc {
+        margin: 0;
+        font-size: 11px;
+        line-height: 18px;
+    }
+    .search__slider {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .search {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .search__label {
+        width: 80%;
+        display: block;
+        margin: 0;
+    }
+    .search__input {
+        width: 100%;
+    }
+}
+
+
+
+
+

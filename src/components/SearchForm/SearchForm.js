@@ -9,19 +9,14 @@ import './SearchForm.css';
  
 const SearchForm = (props) => {
 
-    const [isSlider, setIsSlider] = React.useState(false);
-
     const sliderClassName = ( 
-        `search__slider-item ${isSlider && 'search__slider-item_active'}` 
+        `search__slider-item ${props.isSlider && 'search__slider-item_active'}` 
       );
-    
-      const activeSlider = () => {
-        setIsSlider(!isSlider);
-      };
+
+    let duration = props.isSlider ? 40 : 999;
    
     const [formValue, setFormValue] = useState({
-        email: '',
-        password: ''
+        film: ''
     })
  
     const handleChange = (e) => {
@@ -35,7 +30,7 @@ const SearchForm = (props) => {
  
     function handleSubmit(e) {
         e.preventDefault();
-        props.onSubmit(formValue.password, formValue.email,);
+        props.onSubmit(formValue.film, duration);
     }
  
     return (
@@ -50,13 +45,15 @@ const SearchForm = (props) => {
                     </div>
                     <div className="search__btns">
                         <button type="submit" className="search__btn"><img className="search__btn-img" alt="Иконка кнопки поиска" src={find}/></button>
-                        <button className="search__btn search__btn_pc search__slider" onClick={activeSlider}><div className={sliderClassName}></div></button>
-                        <p className="search__slider-desc search__btn_pc">Короткометражки</p>
                     </div>
                 </form>
+                <div className="search__slider-container">
+                    <button className="search__btn search__btn_pc search__slider" onClick={props.handelActiveSlider}><div className={sliderClassName}></div></button>
+                    <p className="search__slider-desc search__btn_pc">Короткометражки</p>
+                </div>
             </section>
             <div className="search__btn_mobile">
-                <button className="search__btn search__slider" onClick={activeSlider}><div className={sliderClassName}></div></button>
+                <button className="search__btn search__slider" onClick={props.handelActiveSlider}><div className={sliderClassName}></div></button>
                 <p className="search__slider-desc">Короткометражки</p>
             </div>
         </>

@@ -4,6 +4,8 @@ import logo from '../../images/logo.svg';
 
 import '../Register/Register.css';
 
+import {validationForm} from '../../utils/validation';
+
 const Login = (props) => {
 
   const [formValue, setFormValue] = useState({
@@ -13,6 +15,11 @@ const Login = (props) => {
 
   const handleChange = (e) => {
     const {name, value} = e.target;
+      
+    const btnSubmitForm = document.querySelector('.btn-form');
+    const formInputList = document.querySelectorAll('.sign__input');
+
+    validationForm(e.target, btnSubmitForm, formInputList);
 
     setFormValue({
       ...formValue,
@@ -40,14 +47,16 @@ const Login = (props) => {
             <label className="sign__label">
               E-mail
               <input placeholder="Email" className="sign__input" required id="email" name="email" type="text" value={formValue.email} onChange={handleChange} />
+              <p className="input__error_massage sign__input_massage">Email должен быть формата test@ya.ru</p>
             </label>
             <label className="sign__label">
               Пароль  
-              <input placeholder="Пароль" className="sign__input" required id="password" name="password" type="password" value={formValue.password} onChange={handleChange} />
+              <input placeholder="Пароль" className="sign__input" required minLength="2" id="password" name="password" type="password" value={formValue.password} onChange={handleChange} />
+              <p className="input__error_massage sign__input_massage">Пароль не может быть пустым</p>
             </label>
           </div>
           <div>
-            <button type="submit" className="sign__btn">Войти</button>
+            <button type="submit" disabled className="btn-form btn-form_deactive sign__btn">Войти</button>
             <p className="sign__text">Ещё не зарегистрированы? <Link to="/sign-up" className="sign__link">Регистрация</Link></p>
           </div>
         </form>

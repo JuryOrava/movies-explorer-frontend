@@ -42,6 +42,15 @@
     font-weight: 500;
 }
 
+.sign__input_massage {
+    color: red;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 47px;
+    margin: 0;
+}
+
 .sign__btn {
     border: none;
     margin: 0 auto;
@@ -61,6 +70,10 @@
     cursor: pointer;
 }
 
+.sign__label {
+    position: relative;
+}
+
 .sign__text {
     text-align: center;
     font-size: 14px;
@@ -72,6 +85,14 @@
 .sign__link {
     text-decoration: none;
     color: #2BE080;
+}
+
+.sign__input_massage_active {
+    display: block;
+}
+
+.btn-form_deactive {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 450px) {

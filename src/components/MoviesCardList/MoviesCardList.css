@@ -12,6 +12,7 @@
     flex-wrap: wrap;
     list-style: none;
     margin: 0;
+    width: 100%;
 }
 
 .movies__item {
@@ -55,6 +56,14 @@
 
 .movies__container_saved {
     padding-bottom: 120px;
+}
+
+.movies__item_deactive {
+    display: none;
+}
+
+.movies__btn_deactive {
+    display: none;
 }
 
 @media screen and (max-width: 1200px) {

@@ -6,6 +6,8 @@ import './Profile.css';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
+import {validationForm} from '../../utils/validation';
+
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -25,6 +27,11 @@ function Profile(props) {
 
   const handleChange = (e) => {
     const {name, value} = e.target;
+    
+    const btnSubmitForm = document.querySelector('.btn-form');
+    const formInputList = document.querySelectorAll('.profile__input');
+
+    validationForm(e.target, btnSubmitForm, formInputList);
 
     setFormValue({
       ...formValue,
@@ -46,15 +53,19 @@ function Profile(props) {
           <div>
             <label className="profile__label">
               <p className="profile__input-name">Имя</p>
-              <input placeholder="Имя" className="profile__input profile__input_one" required id="name" name="name" type="text" value={formValue.name} onChange={handleChange} />
+              <input placeholder="Имя" className="profile__input profile__input_one" required pattern="[a-zA-Zа-яА-Я]{2,}[\s\-]?[a-zA-Zа-яА-Я]*" id="name" name="name" type="text" value={formValue.name} onChange={handleChange} />
+              <p className="input__error_massage profile__input_massage profile__input_massage_one">Имя может содержать только латиницу, кирилицу, пробел и знак дефиса «-»</p>
             </label>
             <label className="profile__label">
               <p className="profile__input-name">E-mail</p>
               <input placeholder="Email" className="profile__input" required id="email" name="email" type="text" value={formValue.email} onChange={handleChange} />
+              <p className="input__error_massage profile__input_massage">Email должен быть формата test@ya.ru</p>
             </label>
+            {props.createUserError && <p class="profile__submit_res-err">К сожалению, возникла какая-то ошибка. Попробуйте чуть позже.</p>}
+            {props.createUserOk && <p class="profile__submit_res-ok">Данные успешно изменены.</p>}
           </div>
           <div className="profile__btns">
-            <button type="submit" className="profile__btn profile__create-btn">Редактировать</button>
+            <button type="submit" disabled="true" className="btn-form btn-form_deactive profile__btn profile__create-btn">Редактировать</button>
             <button onClick={signOut} className="profile__btn profile__sign-btn">Выйти из аккаунта</button>
           </div>
         </form>

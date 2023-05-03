@@ -25,6 +25,10 @@
     background: url(../../images/favourites_active.svg);
 }
 
+.movie__favourites_delete {
+    background: url(../../images/favourites_delete.svg);
+}
+
 .movie__favourites:hover {
     opacity: 0.7;
 }
@@ -34,6 +38,7 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
+    max-width: 80%;
 }
 
 .movie__time {

@@ -17,8 +17,8 @@ function Movies(props) {
     return (
       <>
         <main className="content">
-            <SearchForm />
-            <MoviesCardList  moviesBtnActive={props.moviesBtnActive} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} onCardClick={props.onCardClick} cards={props.cards} />
+            <SearchForm onSubmit={props.onSubmit} isSlider={props.isSlider} handelActiveSlider={props.handelActiveSlider}/>
+            <MoviesCardList moviesFindError={props.moviesFindError} emptyResult={props.emptyResult} startPreloader={props.startPreloader} pagedMoviesSave={props.pagedMoviesSave} handleDeleteMovies={props.handleDeleteMovies} handleSaveMovies={props.handleSaveMovies} movies={props.movies} savedMovies={props.savedMovies} />
         </main>
       </>
     );

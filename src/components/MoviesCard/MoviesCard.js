@@ -2,18 +2,32 @@ import React from 'react';
 
 import './MoviesCard.css';
 
-// import { CurrentUserContext } from '../../contexts/CurrentUserContext'; // Понадобится при реализации функционала активности иконки
-
 function MoviesCard(props) {
+  let imageCard = !props.pagedMoviesSave ? 'https://api.nomoreparties.co/' + props.card.image.url : props.card.image;
+
+  function handleSavedFilm() {
+    !isSaved ? props.handleSaveMovies(props.card) : props.handleDeleteMovies(props.card);
+  }
+
+  const isSaved = props.savedMovies.some(i => i.nameRU === props.card.nameRU);
+
+  const cardLikeButtonClassName = ( 
+    `movie__favourites ${isSaved && 'movie__favourites_active'}`
+  );
+
+  let durationHours = Math.trunc(props.card.duration / 60);
+  let durationMovies = `${durationHours}ч ${props.card.duration - durationHours * 60}м`
 
   return (
     <>
       <div className="movie__desc">
-        <button className="movie__favourites"></button>
-        <p className="movie__name">{props.card.name}</p>
-        <p className="movie__time">{props.card.time}</p>
+        <button className={cardLikeButtonClassName} onClick={handleSavedFilm}></button>
+        <p className="movie__name">{props.card.nameRU}</p>
+        <p className="movie__time">{durationMovies}</p>
       </div>
-      <img className="movie__image" src={props.card.image} alt={props.card.name}/>
+      <a href={props.card.trailerLink} target="_blank" title="Посмотреть трейлер на YouTube">
+        <img className="movie__image" src={imageCard} alt={props.card.nameRU}/>
+      </a>
     </>
   )
 }

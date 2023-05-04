@@ -15,13 +15,17 @@ function MoviesCard(props) {
     `movie__favourites ${isSaved && 'movie__favourites_active'}`
   );
 
+  const cardLikeButtonClassNameDelete = ( 
+    `movie__favourites movie__favourites_delete`
+  );
+
   let durationHours = Math.trunc(props.card.duration / 60);
   let durationMovies = `${durationHours}ч ${props.card.duration - durationHours * 60}м`
 
   return (
     <>
       <div className="movie__desc">
-        <button className={cardLikeButtonClassName} onClick={handleSavedFilm}></button>
+        <button className={!props.pagedMoviesSave ? cardLikeButtonClassName : cardLikeButtonClassNameDelete} onClick={handleSavedFilm}></button>
         <p className="movie__name">{props.card.nameRU}</p>
         <p className="movie__time">{durationMovies}</p>
       </div>

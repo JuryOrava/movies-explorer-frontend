@@ -15,7 +15,7 @@ function Profile(props) {
   function signOut(){
     if (localStorage.getItem('token')){
       localStorage.removeItem('token');
-      navigate("/sign-in");
+      navigate("/");
       props.handleExit();
     }
   } 

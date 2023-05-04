@@ -49,7 +49,7 @@ function App() {
 
   React.useEffect(() => {
     handleTokenCheck();
-  }, []);
+  });
 
   const handleTokenCheck = () => {
     if (localStorage.getItem('token')){
@@ -58,7 +58,6 @@ function App() {
       .then((res) => {
         if (res){
           setLoggedIn(true);
-          navigate("/", {replace: true})
         }
       })
       .catch((err)=>{
@@ -66,6 +65,7 @@ function App() {
       });
     }
   }
+
   const handleLogin = () => {
     setLoggedIn(true);
   }
@@ -228,7 +228,7 @@ const handleSubmitLogin = (password, email) => {
         <Route path="/sign-up" element={<Register onSubmit={handleSubmitRegister}/>} />
         <Route path="/sign-in" element={<Login handleLogin={handleLogin} onSubmit={handleSubmitLogin}/>} />
         <Route path="/404" element={<NotFound/>} />
-        <Route path="*" element={loggedIn ? <Navigate to="/" /> : <Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
       {loggedIn && <Footer />}
     </div>

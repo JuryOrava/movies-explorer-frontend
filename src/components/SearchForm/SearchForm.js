@@ -9,7 +9,16 @@ import './SearchForm.css';
  
 const SearchForm = (props) => {
 
-    const sliderClassName = ( 
+    function getLocalStorageItem () {
+        return {
+          keyForFind: localStorage.getItem('keyForFind'),
+          maxDurationFilms: localStorage.getItem('maxDurationFilms')
+        }
+      }
+    
+      let localStorageItem = getLocalStorageItem();
+
+    const sliderClassName = (
         `search__slider-item ${props.isSlider && 'search__slider-item_active'}` 
       );
 
@@ -17,7 +26,18 @@ const SearchForm = (props) => {
    
     const [formValue, setFormValue] = useState({
         film: ''
-    })
+    });
+
+    React.useEffect(() => {
+        if (localStorage.getItem('keyForFind')) {
+          props.onSubmit(localStorageItem.keyForFind, localStorageItem.maxDurationFilms);
+          setFormValue({film: localStorageItem.keyForFind});
+          let slider = document.querySelector('.search__slider-item');
+          if (localStorage.getItem('maxDurationFilms') === '40' && !slider.classList.contains('search__slider-item_active')) {
+            props.handelActiveSlider();
+          }
+        }
+      }, []);
  
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -32,6 +52,10 @@ const SearchForm = (props) => {
         e.preventDefault();
         props.onSubmit(formValue.film, duration);
     }
+
+    /*const valueFormInput = ( 
+        localStorage.getItem('keyForFind') ? formValue.name : localStorageItem.keyForFind 
+      );*/
  
     return (
         <>
@@ -40,7 +64,7 @@ const SearchForm = (props) => {
                 <form onSubmit={handleSubmit} className="search__form" noValidate>
                     <div>
                         <label className="search__label">
-                            <input placeholder="Фильм" className="search__input" required id="film" name="film" type="text" value={formValue.name} onChange={handleChange} />
+                            <input placeholder="Фильм" className="search__input" required id="film" name="film" type="text" value={formValue.film} onChange={handleChange} />
                         </label>
                     </div>
                     <div className="search__btns">

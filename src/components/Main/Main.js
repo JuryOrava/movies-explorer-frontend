@@ -13,6 +13,9 @@ import Footer from '../Footer/Footer.js';
 import './Main.css';
 
 function Main(props) {  
+
+console.log(props.loggedIn)
+
     return (
       <>
         {!props.loggedIn && <NavTab />}

@@ -55,8 +55,6 @@ function MoviesCardList(props) {
     };
   }, []);
 
-  console.log(window.innerWidth)
-
   const moviesContainerClassName = ( 
     `movies__container ${props.pagedMoviesSave && 'movies__container_saved'}` 
   );

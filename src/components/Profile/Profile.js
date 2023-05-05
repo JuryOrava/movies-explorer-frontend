@@ -14,11 +14,11 @@ function Profile(props) {
   const navigate = useNavigate();
   function signOut(){
     if (localStorage.getItem('token')){
-      localStorage.removeItem('token');
-      navigate("/");
       props.handleExit();
+      localStorage.clear();
+      navigate("/");
     }
-  } 
+  }
 
   const [formValue, setFormValue] = useState({
     name: currentUser.name,

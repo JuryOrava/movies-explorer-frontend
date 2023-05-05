@@ -47,9 +47,17 @@ function App() {
 
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    handleTokenCheck();
-  });
+  const handleExit = () => {
+    setMovies([]);
+    setSavedMovies([]);
+    setIsSlider(false);
+    setEmptyResult(false);
+    setEmptyResultSavedPage(false);
+    setMoviesFindError(false);
+    setСreateUserError(false);
+    setСreateUserOk(false);
+    setLoggedIn(false);
+  }
 
   const handleTokenCheck = () => {
     if (localStorage.getItem('token')){
@@ -62,16 +70,8 @@ function App() {
       })
       .catch((err)=>{
         console.log(err);
-      });
+      })
     }
-  }
-
-  const handleLogin = () => {
-    setLoggedIn(true);
-  }
-  
-  const handleExit = () => {
-    setLoggedIn(false);
   }
 
   const handelActiveSlider = () => {
@@ -101,8 +101,8 @@ function App() {
     })
   }
 
-
   React.useEffect(() => {
+    handleTokenCheck();
     Promise.all([
       mainApi.getUserInfo(),
       mainApi.getInitialMovies()
@@ -111,7 +111,6 @@ function App() {
     .then((values)=>{
       setСurrentUser(values[0]);
       setSavedMovies(values[1]);
-      console.log(values[1])
     })
     .catch((err)=>{
       console.log(err);
@@ -167,6 +166,8 @@ function App() {
         } else {
           setEmptyResult(false);
         }
+        localStorage.setItem('keyForFind', keyForFind);
+        localStorage.setItem('maxDurationFilms', maxDuration);
       })
       .catch((err) => {
         setMoviesFindError(true);
@@ -201,18 +202,31 @@ function App() {
     })
   }
 
-const handleSubmitLogin = (password, email) => {   
+const handleSubmitLogin = (password, email) => {
   mainApi.authorize(password, email)
   .then((data) => {
-    console.log(data)
     if (data.token){
-      handleLogin();
+      setLoggedIn(true);
       navigate('/movies', {replace: true});
       localStorage.setItem('token', data.token);
       return data;
     }
   })
-  .catch(err => console.log(err));
+  .catch(err => console.log(err))
+  .finally(() => {
+    Promise.all([
+      mainApi.getUserInfo(),
+      mainApi.getInitialMovies()
+    ])
+    
+    .then((values)=>{
+      setСurrentUser(values[0]);
+      setSavedMovies(values[1]);
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+  })
 }
 
   return (
@@ -226,7 +240,7 @@ const handleSubmitLogin = (password, email) => {
         <Route path="/saved-movies" element={<ProtectedRoute element={<SavedMovies emptyResultSavedPage={emptyResultSavedPage} isSlider={isSlider} handelActiveSlider={handelActiveSlider} savedMovies={savedMovies} pagedMoviesSave={true}  onSubmit={handleFindSavedMovies} handleDeleteMovies={handleDeleteMovies} handleSaveMovies={handleSaveMovies} />} loggedIn={loggedIn}/>} />
         <Route path="/profile" element={<ProtectedRoute element={<Profile createUserError={createUserError} createUserOk={createUserOk} handleExit={handleExit} onSubmit={handleUpdateUser}/>} loggedIn={loggedIn}/>} />
         <Route path="/sign-up" element={<Register onSubmit={handleSubmitRegister}/>} />
-        <Route path="/sign-in" element={<Login handleLogin={handleLogin} onSubmit={handleSubmitLogin}/>} />
+        <Route path="/sign-in" element={<Login onSubmit={handleSubmitLogin}/>} />
         <Route path="/404" element={<NotFound/>} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>

@@ -1,6 +1,7 @@
 import { validate } from 'react-email-validator';
 
 export function validationForm(thisInput, btn, inputList) {
+
     let thisLabel = thisInput.parentNode;
     let validateMassage = thisLabel.querySelector('.input__error_massage');
     let validArr = [];

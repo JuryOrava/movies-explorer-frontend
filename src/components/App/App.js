@@ -66,6 +66,8 @@ function App() {
       .then((res) => {
         if (res){
           setLoggedIn(true);
+          localStorage.setItem('name', res.name);
+          localStorage.setItem('email', res.email);
         }
       })
       .catch((err)=>{
@@ -73,6 +75,8 @@ function App() {
       })
     }
   }
+
+  console.log(currentUser);
 
   const handelActiveSlider = () => {
     return setIsSlider(!isSlider);
@@ -193,8 +197,11 @@ function App() {
   function handleUpdateUser(name, email) {
     mainApi.editUserInfo(name, email)
     .then((res) => {
+      console.log(res)
       setСurrentUser(res);
       setСreateUserOk(true);
+      localStorage.setItem('name', res.name);
+      localStorage.setItem('email', res.email);
     })
     .catch((err) => {
       setСreateUserError(true);
@@ -218,9 +225,10 @@ const handleSubmitLogin = (password, email) => {
       mainApi.getUserInfo(),
       mainApi.getInitialMovies()
     ])
-    
     .then((values)=>{
       setСurrentUser(values[0]);
+      localStorage.setItem('name', values[0].name);
+      localStorage.setItem('email', values[0].email);
       setSavedMovies(values[1]);
     })
     .catch((err)=>{

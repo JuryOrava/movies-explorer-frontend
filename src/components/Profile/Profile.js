@@ -21,9 +21,9 @@ function Profile(props) {
   }
 
   const [formValue, setFormValue] = useState({
-    name: currentUser.name,
-    email: currentUser.email
-  })
+    name: localStorage.getItem('name'),
+    email: localStorage.getItem('email')
+  });
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -32,8 +32,7 @@ function Profile(props) {
     const formInputList = document.querySelectorAll('.profile__input');
 
     validationForm(e.target, btnSubmitForm, formInputList);
-    console.log(btnSubmitForm)
-    console.log(btnSubmitForm.classList.contains('btn-form_deactive'))
+
     if (e.target.value === currentUser.name || e.target.value === currentUser.email) {
       !btnSubmitForm.classList.contains('btn-form_deactive') && btnSubmitForm.classList.add('btn-form_deactive');
     }
@@ -46,8 +45,8 @@ function Profile(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formValue.name, formValue.email)
     props.onSubmit(formValue.name, formValue.email);
+    document.querySelector('.btn-form').classList.add('btn-form_deactive');
   }
 
     return (

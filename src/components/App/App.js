@@ -250,7 +250,7 @@ const handleSubmitLogin = (password, email) => {
         <Route path="/sign-up" element={<Register onSubmit={handleSubmitRegister}/>} />
         <Route path="/sign-in" element={<Login onSubmit={handleSubmitLogin}/>} />
         <Route path="/404" element={<NotFound/>} />
-        <Route path="*" element={<Navigate to="/404" />} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
       {loggedIn && <Footer />}
     </div>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../images/logo.svg';
 
 import '../Register/Register.css';
@@ -7,6 +7,12 @@ import '../Register/Register.css';
 import {validationForm} from '../../utils/validation';
 
 const Login = (props) => {
+
+  const navigate = useNavigate();
+  
+  if (localStorage.getItem('token')){
+    navigate("/profile");
+  }
 
   const [formValue, setFormValue] = useState({
     email: '',
